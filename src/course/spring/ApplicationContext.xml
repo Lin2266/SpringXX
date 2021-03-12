@@ -4,7 +4,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
            http://www.springframework.org/schema/beans 
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
            
        <!-- spring所提供的關聯注入di可分2種:
        		1.XML-based:使用XML檔案設定類別間的關聯性
@@ -19,6 +21,10 @@
        <!-- spring將其控管的bean元件中找合適的自動關聯注入，即id為weapon的bean元件 -->
        		<constructor-arg ref="weapon"/>
        </bean>
+      
+       <!-- aop 上面設定要先載入url --> 
+       <bean id="alertAspectBean" class="course.spring.Alert"/>
+       
            
 
 </beans>
