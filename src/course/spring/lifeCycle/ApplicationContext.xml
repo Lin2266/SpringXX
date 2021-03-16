@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+      	
+      	<!--BeanPostProcessor測試-->
+       <bean id="otherBean" class="course.spring.lifeCycle.OtherBean"/>
+       
+       <!--生命週期--> 
+       <bean id="simpleBean" class="course.spring.lifeCycle.SimpleBean"
+       		 init-method="myInit"
+       		 destroy-method="myDestroy">
+       		 <property name="message" value="Hello World"/>      		
+       </bean>    
+       
+		<!--BeanPostProcessor測試-->
+       <bean id="BeanPostProcessorImpl" class="course.spring.lifeCycle.BeanPostProcessorImpl"/>
+
+</beans>

@@ -1,9 +1,12 @@
 package course.spring;
 
+import course.spring.aop.AlertXML;
+import course.spring.di.WeaponDI;
+
 public class MySoldierNG implements Soldier{
 	WeaponDI weapon;
-	Alert alert;
-	public MySoldierNG(WeaponDI w,Alert a) {
+	AlertXML alert;
+	public MySoldierNG(WeaponDI w,AlertXML a) {
 		this.weapon = w;
 		this.alert = a;
 	}

@@ -1,6 +1,6 @@
-package course.spring;
+package course.spring.aop;
 
-public class Alert {
+public class AlertXML {
 	public void beforeAttack() {
 		System.out.println("Before attack...");
 	}

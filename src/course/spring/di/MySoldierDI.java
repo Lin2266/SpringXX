@@ -1,4 +1,6 @@
-package course.spring;
+package course.spring.di;
+
+import course.spring.Soldier;
 
 public class MySoldierDI implements Soldier{
 	WeaponDI weaponDI;

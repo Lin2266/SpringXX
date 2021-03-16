@@ -1,4 +1,4 @@
-package course.spring;
+package course.spring.di;
 
 public class GunDI implements WeaponDI{
 	//槍實作武器，攻擊
