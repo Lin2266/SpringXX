@@ -1,8 +1,6 @@
 package course.spring.aop;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import course.spring.di.GunDI;
 import course.spring.di.MySoldierDI;
 import course.spring.di.WeaponDI;
