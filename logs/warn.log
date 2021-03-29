@@ -1,0 +1,32 @@
+2021-03-29 11:52:16.734 WARN   [main] (Log4j2Test.java:18) - 修改后的名字为：提莫
+2021-03-29 11:53:33.438 WARN   [main] (Log4j2Test.java:18) - 修改后的名字为：提莫
+2021-03-29 14:49:54.751 WARN   [main] (AbstractApplicationContext.java:591) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMediaPlayer' defined in course.spring.di.AppConfig: Unsatisfied dependency expressed through method 'getMediaPlayer' parameter 0; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'course.spring.di.CompactDisc' available: expected single matching bean but found 2: getCompactDisc,myBean
+2021-03-29 14:49:54.941 WARN   [main] (AbstractApplicationContext.java:591) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMediaPlayer' defined in course.spring.di.AppConfig: Unsatisfied dependency expressed through method 'getMediaPlayer' parameter 0; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'course.spring.di.CompactDisc' available: expected single matching bean but found 2: getCompactDisc,myBean
+2021-03-29 14:49:54.969 WARN   [main] (AbstractApplicationContext.java:591) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMediaPlayer' defined in course.spring.di.AppConfig: Unsatisfied dependency expressed through method 'getMediaPlayer' parameter 0; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'course.spring.di.CompactDisc' available: expected single matching bean but found 2: getCompactDisc,myBean
+2021-03-29 15:02:56.784 WARN   [main] (TestContextManager.java:199) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.event.EventPublishingTestExecutionListener@4145bad8] to process 'before class' callback for test class [class course.spring.di.CDPlayerTest]
+java.lang.NoSuchMethodError: org.springframework.test.context.TestContext.publishEvent(Ljava/util/function/Function;)V
+	at org.springframework.test.context.event.EventPublishingTestExecutionListener.beforeTestClass(EventPublishingTestExecutionListener.java:93) ~[spring-test-5.3.5.jar:5.3.5]
+	at org.springframework.test.context.TestContextManager.beforeTestClass(TestContextManager.java:195) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:60) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210) [.cp/:?]
+2021-03-29 15:02:56.788 WARN   [main] (TestContextManager.java:367) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.event.EventPublishingTestExecutionListener@4145bad8] to process 'after class' callback for test class [class course.spring.di.CDPlayerTest]
+java.lang.NoSuchMethodError: org.springframework.test.context.TestContext.publishEvent(Ljava/util/function/Function;)V
+	at org.springframework.test.context.event.EventPublishingTestExecutionListener.afterTestClass(EventPublishingTestExecutionListener.java:147) ~[spring-test-5.3.5.jar:5.3.5]
+	at org.springframework.test.context.TestContextManager.afterTestClass(TestContextManager.java:363) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:77) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191) [spring-test-4.3.30.RELEASE.jar:4.3.30.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210) [.cp/:?]

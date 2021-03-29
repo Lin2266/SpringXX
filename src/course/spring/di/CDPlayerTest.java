@@ -43,5 +43,15 @@ public class CDPlayerTest {
 			//側錄後呼叫getLog()取得紀錄，使用assertEquals()斷言兩參數值內容相同。
 			assertEquals("Playing [Nice Song] by [Some Artist]",out.getLog());
 		}
+		
+		//AppConfig.java
+		@Autowired
+		private MediaPlayer player1;
+		@Test
+		public void testIfSingleton() {
+			assertTrue(player == player1);
+			assertTrue(player.getCD() == player1.getCD());
+			
+		}
 
 }

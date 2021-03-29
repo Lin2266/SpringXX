@@ -3,8 +3,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
     ">
            
        <!-- spring所提供的關聯注入di可分2種:
@@ -21,5 +25,12 @@
        <!-- 把GunDI注入到MySoldierDI建構子裡-->
        		<constructor-arg ref="weapon"/>
        </bean> 
+       
+       <!-- 使用c:cd-ref="compactDisc"比<constructor-arg ref="weapon"/> 語法更簡潔-->
+       <!-- C為名稱空間，cd為類別MediaPlayerImpl的建構子參數名稱，-ref=""值為要注入的bean參考名稱 -->
+       <!-- 也可使用建構子的參數位置來指定參數，位置的指定使用index，如:c:_0-ref="compactDisc",xml規範不允許
+       以0為開頭(0_)，若建構子只有一個參數，可省略index，直接使用 c:_-ref="compactDisc"-->
+       <bean id="compactDisc" class="course.spring.di.CompactDiscImpl"/>
+       <bean id="cdPlayer" class="course.spring.di.MediaPlayerImpl" c:cd-ref="compactDisc"/>
 
 </beans>
