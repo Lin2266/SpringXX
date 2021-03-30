@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util.xsd">
+	
+		<!-- 參考PNamespaceWithUtilNamespaceTest-context.xml -->
+		<!-- list關聯集合，p-namespace和c-namespace都無法關聯集合物件，可藉由
+			 util-namespace的 <util:list>標籤達成。
+			 常用成員列表:
+			 <util:constant> 	建立一個參照到某類別public static欄位的bean元件
+			 <util:list>	 	建立一個java.util.List的bean元件
+			 <util:map>	 		建立一個java.util.Map的bean元件
+			 <util:properties>	建立一個java.util.Properties的bean元件
+			 <util:set>			建立一個java.util.Set的bean元件
+			 -->
+    	<util:list id="trackList">
+    			<value>A</value>
+    			<value>B</value>
+    			<value>C</value>
+    			<value>D</value>
+    	</util:list>
+		<bean id="compactDisc" class="course.spring.di.BlankDisc"
+		  p:title="[Nice Song]"
+		  p:artist="[Some Artist]"
+		  p:tracks-ref="trackList">		  
+		</bean>
+    <bean id="cdPlayer" class="course.spring.di.MediaPlayerImpl2"
+    	  p:compactDisc-ref="compactDisc"/>
+</beans>

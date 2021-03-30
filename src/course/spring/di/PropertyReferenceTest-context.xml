@@ -4,12 +4,13 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans.xsd">
     
-<!--     跟CNamespaceValueTest-comtext.xml比較 -->
+<!--     跟PNamespaceReferenceTest-context.xml比較 -->
     <bean id="compactDisc" class="course.spring.di.CompactDiscBlankImpl">
     	<constructor-arg value="[Nice Song]"/>
     	<constructor-arg value="[Some Artist]"/>
     </bean>
     <bean id="cdPlayer" class="course.spring.di.MediaPlayerImpl2">
-    	<constructor-arg ref="compactDisc"/>
+		<!-- 以屬性欄位注入物件關聯 -->
+    	<property name="compactDisc" ref="compactDisc"/>
     </bean>
 </beans>

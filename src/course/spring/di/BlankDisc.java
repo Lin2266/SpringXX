@@ -2,7 +2,7 @@ package course.spring.di;
 
 import java.util.List;
 
-//設定檔 ConstructorArgCollectionTest-context.xml
+//設定檔 ConstructorArgCollectionTest-context.xml、PropertyValueTest-context.xml
 public class BlankDisc implements CompactDisc{
 	private String title;
 	private String artist;
@@ -13,6 +13,22 @@ public class BlankDisc implements CompactDisc{
 		this.artist = artist;
 		this.tracks = tracks;
 	}
+	
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
+
+	public void setTracks(List<String> tracks) {
+		this.tracks = tracks;
+	}
+
 
 	@Override
 	public void play() {

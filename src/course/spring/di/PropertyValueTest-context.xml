@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+<!--     以屬性欄位注入集合物件關聯, 跟PNamespaceValueTest-context.xml比對 -->
+    <bean id="compactDisc" class="course.spring.di.BlankDisc">
+<!--     設定BlankDisc屬性的值 -->
+    	<property name="title" value="[Nice Song]"/>
+    	<property name="artist" value="[Some Artist]"/>
+    	<property name="tracks">
+    		<list>
+    			<value>A</value>
+    			<value>B</value>
+    			<value>C</value>
+    			<value>D</value>
+    		</list>
+    	</property>
+    </bean>
+    <bean id="cdPlayer" class="course.spring.di.MediaPlayerImpl2"
+    	  p:compactDisc-ref="compactDisc"/>
+
+</beans>

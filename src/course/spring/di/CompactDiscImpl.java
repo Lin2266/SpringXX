@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 //@Component("beanName")
 //@Named("beanName")
 
-@Component()
+//@Component()
 public class CompactDiscImpl implements CompactDisc{
 	private String title = "[Nice Song]";
 	private String artist = "[Some Artist]";

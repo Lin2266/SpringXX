@@ -6,13 +6,13 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
     
 	<!--使用c-namespace屬性，跟ConstructorArgValueTest-context.xml的<constructor-arg>比較-->
-	<!--bean的屬性title，_0索引值=title -->
+	<!--bean的屬性title，_0索引值=title 
+		c:_0="[Nice Song]" = c:title="[Nice Song]"
+		c:_1="Some Artist" = c:artist="Some Artist"
+		-->
 	<bean id="compactDisc" class="course.spring.di.CompactDiscBlankImpl"
 			c:title="[Nice Song]" 
-			c:artist="Some Artist"
-			c:_0="[Nice Song]"
-			c:_1="Some Artist"
-			/>
-	<bean id="cdPlayer" class="course.spring.di.MediaPlayerImpl" 
+			c:artist="Some Artist" />
+	<bean id="cdPlayer" class="course.spring.di.MediaPlayerImpl2" 
 			c:_-ref="compactDisc"/>
 </beans>
