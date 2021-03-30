@@ -6,7 +6,14 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
-//使用@Aspect 讓類別Audience成為Aspect物件
+/*
+ * AOP(Aspect-Oriented-Programming)面向切面編程:
+   在不同的商業邏輯流程中，會有一些固定或雷同的程式碼不斷出現，它們和商業邏輯無關，但影響程式的執行，稱為「橫切關注」，
+   通常是一些「輔助功能」，如交易(transaction)、日誌記錄(logging)、權限控管(security)等。
+   
+   Aspect元件就是代理人，bean元件就是被代理人，必須一起實作相同的interface。
+*/
+//使用標註類別定義Aspect物件
 @Aspect
 public class Audience { //聽眾
 	//藉由在表演(Show)的過程中，聽眾(Audience)可能在表演前、後進行的動作，來呈現AOP使用的方法。
@@ -16,24 +23,24 @@ public class Audience { //聽眾
 	//使用PointCut(切入點)表示execution(* course.spring.aop.show.Show.play(..)指定要攔截的方法
 	@Before("execution(* course.spring.aop.show.Show.play(..))") //之前執行
 	public void beQuiet() { //安靜
-		System.out.println("Silencing cell phones."); //靜音手機
+		System.out.println("Audience:Silencing cell phones."); //靜音手機
 	}
 	
 	//表示只在方法「正常結束(return)」才攔截
 	@AfterReturning("execution(* course.spring.aop.show.Show.play(..))") //退貨後
 	public void applause() { //掌聲
-		System.out.println("Good show!!");
+		System.out.println("Audience:Good show!!");
 	}
 	
 	//表示只在方法「未正常結束(exception)」才攔截
 	@AfterThrowing("execution(* course.spring.aop.show.Show.play(..))") //投擲後
 	public void demandRefund() {
-		System.out.println("Demanding a refund!!"); //要求退款
+		System.out.println("Audience:Demanding a refund!!"); //要求退款
 	}
 	
 	//攔截時間點在方法play執行「後」，而且不論方法正常結束與否
 	@After("execution(* course.spring.aop.show.Show.play(..))") //之後
 	public void leave() { //離開
-		System.out.println("The show ends.");
+		System.out.println("Audience:The show ends.");
 	}
 }
