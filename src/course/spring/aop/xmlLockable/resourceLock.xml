@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+	<bean id="resource" class="course.spring.aop.resource.ResourceImpl"/>
+
+<!--  	
+	@DeclareParents(value = "course.spring.aop.resource.Resource+",defaultImpl = LockableImpl.class)
+	private Lockable lock;
+	等同虛線1範圍
+-->
+<!-- 1=============================================================================== -->
+	<bean id="lockable" class="course.spring.aop.xmlLockable.LockableImpl"/>
+	<bean id="resourceLockAspect" class="course.spring.aop.xmlLockable.ResourceLockAspect"/>
+	<aop:config>		
+		<aop:aspect ref="resourceLockAspect">
+			<aop:declare-parents 
+					types-matching="course.spring.aop.resource.Resource+"
+					implement-interface="course.spring.aop.xmlLockable.Lockable"
+					delegate-ref="lockable"/>
+<!-- 1================================================================================== -->
+<!-- 
+	@Pointcut("execution(* *.*.*.*.Resource.setContent(String)) && args(content)")
+	public void setResourceContent(String content) {
+		
+	} 
+	跟
+	@Around("setResourceContent(content) && this(lockable)")
+	等同虛線2範圍
+-->		
+<!-- 2================================================================================== -->			
+			<aop:around pointcut="execution(* *.*.*.*.Resource.setContent(String)) and args(content) and this(lockable)" method="beforeSetContent"/>
+<!-- 2================================================================================== -->		
+		</aop:aspect>
+	</aop:config>
+		
+</beans>

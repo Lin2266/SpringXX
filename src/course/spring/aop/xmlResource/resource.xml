@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+
+	<bean id="resource" class="course.spring.aop.xmlResource.ResourceImpl"/>
+	<bean id="resourceAspect" class="course.spring.aop.xmlResource.ResourceAspect"/><!-- @Aspect定義的類 -->
+	<aop:config>
+		<!-- 使用標籤攔截方法參數:
+			 原先@Pointcut使用「execution() && args()」，設定檔內需改為「execution() and args()」 -->
+		<aop:pointcut id="setResourceContent" expression="execution(* course.spring.aop.xmlResource.Resource.setContent(String)) and args(content)" />
+		<aop:aspect ref="resourceAspect">
+			<aop:before pointcut-ref="setResourceContent" method="beforeSetContent"/>
+		</aop:aspect>
+	</aop:config>
+		
+</beans>

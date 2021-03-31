@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+<!--     aop需加設定:
+     	 xmlns:aop="http://www.springframework.org/schema/aop"
+     	 xsi:
+     	 http://www.springframework.org/schema/aop
+    	 http://www.springframework.org/schema/aop/spring-aop.xsd">
+-->
+
+	<bean id="show" class="course.spring.aop.xmlShow.ShowImpl"/>
+	<bean id="audience" class="course.spring.aop.xmlShow.Audience"/><!-- @Aspect定義的類 -->
+	<bean id="audienceAround" class="course.spring.aop.xmlShow.AudienceAround"/><!-- @Around方法定義的類 -->
+	<aop:config>
+	<!--  一般pointcut屬性的executtion()表示式容易定義重複
+		<aop:aspect ref="audience">
+			<aop:before pointcut="execution(* course.spring.aop.xmlShow.Show.play(..))" method="beQuiet"/>
+			<aop:after-returning pointcut="execution(* course.spring.aop.xmlShow.Show.play(..))" method="applause"/>			
+			<aop:after-throwing pointcut="execution(* course.spring.aop.xmlShow.Show.play(..))" method="demandRefund"/>
+			<aop:after pointcut="execution(* course.spring.aop.xmlShow.Show.play(..))" method="leave"/>
+		</aop:aspect>
+	-->
+		<!-- <aop:pointcut/>標籤可避免表示式重複定義，只需要定義一個，全部aop都可使用，放<aop:aspect>裡面或外層全部都使用的到 -->
+		<aop:pointcut id="playShow" expression="execution(* course.spring.aop.xmlShow.Show.play(..))" />
+		<aop:aspect ref="audience">
+			<aop:before pointcut-ref="playShow" method="beQuiet"/>
+			<aop:after-returning pointcut-ref="playShow" method="applause"/>			
+			<aop:after-throwing pointcut-ref="playShow" method="demandRefund"/>
+			<aop:after pointcut-ref="playShow" method="leave"/>
+		</aop:aspect>
+		<!-- @Around方法定義 -->
+		<aop:aspect ref="audienceAround">
+			<aop:around pointcut-ref="playShow" method="aroundShow"/>
+		</aop:aspect>
+	</aop:config>
+		
+</beans>
