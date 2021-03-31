@@ -9,10 +9,8 @@
     
 
 	<bean id="resource" class="course.spring.aop.xmlResource.ResourceImpl"/>
-	<bean id="resourceAspect" class="course.spring.aop.xmlResource.ResourceAspect"/><!-- @Aspect定義的類 -->
+	<bean id="resourceAspect" class="course.spring.aop.xmlResource.ResourceAspect"/>
 	<aop:config>
-		<!-- 使用標籤攔截方法參數:
-			 原先@Pointcut使用「execution() && args()」，設定檔內需改為「execution() and args()」 -->
 		<aop:pointcut id="setResourceContent" expression="execution(* course.spring.aop.xmlResource.Resource.setContent(String)) and args(content)" />
 		<aop:aspect ref="resourceAspect">
 			<aop:before pointcut-ref="setResourceContent" method="beforeSetContent"/>
