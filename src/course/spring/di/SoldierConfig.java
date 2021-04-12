@@ -8,6 +8,9 @@ import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 import course.spring.Soldier;
 import course.spring.aop.AlertAnnotation;
+import course.spring.diXML.GunDI;
+import course.spring.diXML.MySoldierDI;
+import course.spring.diXML.WeaponDI;
 
 //spring所提供的關聯注入di可分2種:2.JAVA-based:使用JAVA類別搭配annotation設定類別間的關聯性。
 @Configuration	//宣告為spring的設定類別

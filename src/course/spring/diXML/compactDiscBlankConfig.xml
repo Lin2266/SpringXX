@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+<!--     SystemConfigJavaXml.java ，整合其他xml設定檔 -->
+    <bean id="compactDisc" class="course.spring.diXML.CompactDiscBlankImpl"
+    	  c:_0="[Nice Song]"
+    	  c:_1="[Some Artist]">
+    	<constructor-arg>
+    		<list>
+    			<value>A</value>
+    			<value>B</value>
+    			<value>C</value>
+    			<value>D</value>
+    		</list>
+    	</constructor-arg>
+    </bean>
+</beans>

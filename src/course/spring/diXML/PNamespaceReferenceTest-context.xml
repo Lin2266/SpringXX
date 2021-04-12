@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+<!--     跟PropertyReferenceTest-context.xml比較 -->
+<!-- 欄位注入關聯時可使用「p-namespace」屬性取代「property」標籤 -->
+
+<!-- 要使用「p」名稱空間前，必須先宣告「xmlns:p="http://www.springframework.org/schema/p"」 
+	 使用「p:compactDisc-ref="compactDisc"」:
+	 「p」為名稱空間。
+	 「compactDisc」為類別欄位名稱。
+	 「-ref=""」值為要注入的bean參考名稱。
+	 因為setter方法每次都設定一個欄位，不使用index指定參數位置。
+-->
+    <bean id="compactDisc" class="course.spring.diXML.CompactDiscBlankImpl">
+    	<constructor-arg value="[Nice Song]"/>
+    	<constructor-arg value="[Some Artist]"/>
+    </bean>
+    <!-- 屬性注入關聯設定 p:compactDisc-ref="compactDisc"-->
+    <bean id="cdPlayer" class="course.spring.diXML.MediaPlayerImpl2"
+    	  p:compactDisc-ref="compactDisc"/>
+		
+</beans>

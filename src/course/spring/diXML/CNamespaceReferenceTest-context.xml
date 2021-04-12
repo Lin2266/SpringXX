@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+<!-- 跟ConstructorArgReferenceTest-context.xml比較 -->
+<!-- 使用「c」名稱空間，必須先宣告「xmlns:c="http://www.springframework.org/schema/c"」 -->
+<!-- 使用c:cd-ref="compactDisc":  
+	 「c」為名稱空間。
+	 「cd」為類別 MediaPlayerImpl2 的建構子參數名稱。
+	 「-ref=""」值為注入的bean參考名稱。
+	 也可以使用建構子的「參數位置」來指定參數，位置的指定使用index，如「c:_0-ref="compactDisc"的
+	 「_0」，加上底線是因為xml規範不允許以0開頭。
+	 若建構子只有一個參數，也可省略index，直接使用「c:_-ref="compactDisc"」
+	  -->
+	  
+    <bean id="compactDisc" class="course.spring.diXML.CompactDiscImpl"/>
+	<bean id="cdPlayer" class="course.spring.diXML.MediaPlayerImpl2"
+		  c:cd-ref="compactDisc"/>
+</beans>

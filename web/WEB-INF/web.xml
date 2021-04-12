@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>Spring</display-name>
+  <absolute-ordering/>
+<!--	連線池設定 -->
+  <listener>
+    <listener-class>course.Apache.dbcp.ConectionPool.WebStartListener</listener-class>
+  </listener>
+  
+<!--	使用xml設定檔是啟用Spring MVC的傳統方式，必須先在容器的web.xml中引用Spring MVC的2個核心類別:
+		1.DispatcherServlet類別
+		使用參數「contextConfigLocation」決定xml設定檔路徑，未敘明時，預設為「/WEB-INF/spring-web-servlet.xml」。
+		載入的bean元件以controllers、view-resolvers、handler-mappings等為主。
+		因為是servlet，存取時需有如「/」的url-pattern搭配。
+		2.ContextLoaderListener類別
+		使用參數「ContextLoaderListener」決定xml設定檔路徑，未敘明時，預設為「/WEB-INF/applicationContext.xml」。
+		載入的bean元件以middle-tier、data-tier等為主。
+-->
+<!-- 	SpringWebInitializer.java的方法「getServletConfigClasses」回傳的類別「WebConfig」使用Java Configuration取代了以下設定
+	 	內容。 -->
+<servlet>
+	<servlet-name>spring-web</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>設定檔位置</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+</servlet>
+<!-- 	SpringWebInitializer.java的方法「getServletMappings」則搭配「getServletConfigClasses」以取代了以下設定
+	 	內容。 -->
+<servlet-mapping>
+	<servlet-name>spring-web</servlet-name>
+	<url-pattern>/</url-pattern>
+</servlet-mapping>
+<!-- 	SpringWebInitializer.java的方法「getRootConfigClasses()」回傳的類別「RootConfig」使用Java Configuration取代了以下設定
+	 	內容。 -->
+<listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>設定檔位置</param-value>
+</context-param>
+</web-app>

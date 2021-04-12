@@ -25,7 +25,7 @@ AppConfig.java
 
 appComfig.xml
 指定套件以自動搜尋bean類別、建立物件及注入關聯性
-<context:component-scan base-package="course.spring.di"/>
+<context:component-scan base-package="course.spring.diXML"/>
 
 CDPlayerTest進行單元測試
 

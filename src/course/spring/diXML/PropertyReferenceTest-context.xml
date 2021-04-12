@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+<!--     跟PNamespaceReferenceTest-context.xml比較 -->
+    <bean id="compactDisc" class="course.spring.diXML.CompactDiscBlankImpl">
+    	<constructor-arg value="[Nice Song]"/>
+    	<constructor-arg value="[Some Artist]"/>
+    </bean>
+    <bean id="cdPlayer" class="course.spring.diXML.MediaPlayerImpl2">
+		<!-- 以屬性欄位注入物件關聯 -->
+    	<property name="compactDisc" ref="compactDisc"/>
+    </bean>
+</beans>

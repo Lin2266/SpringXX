@@ -1,0 +1,27 @@
+JNDI lookup
+Connection pool
+JDBC driver
+
+在選擇時，建議應先考慮使用「Connection pool」，若由容器提供資料來源，則可用「JNDI lookup」
+的方式調用。
+一般來說容器提供的資料來源都是Connection pool型式，而且效能和穩定度都經過調校，最後才考慮沒有
+connection pool機制的「JDBC driver」。
+
+JNDI取得Connection pool,在Tomcat的
+「server.xml」需加入:
+<Resource auth="Container"" 
+    	  name="jdbc/derby" 
+    	  global="jdbc/derby"
+    	  type="javax.sql.DataSource"
+    	  driverClassName="org.apache.derby.jdbc.ClientDriver"
+    	  url="jdbc:derby://localhost:1527/myDB"
+    	  username="root"
+    	  password="sa"/>
+    	  
+「context.xml」:
+<ResourceLink name="jdbc/MylocalDB"
+				  globl="jdbc/derby"
+				  auth="Container"
+				  type="javax.sql.DataSource"/>
+				  
+程式碼指定資料為「java:/comp/env/jdbc/MyLocalDB」,即可使用JNDI存取

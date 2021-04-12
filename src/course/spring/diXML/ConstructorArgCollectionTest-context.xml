@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+	<!--若建構子參數List<String> tracks 就程式邏輯非必要，但為建立bean物件，則可使用<null/>標籤 
+		<constructor-arg>
+    		<null/>
+    	</constructor-arg>
+    	
+    	若List成員非字串，而是其他bean元件，則將<value>標籤改為<ref>
+    	<constructor-arg>
+    		<ref bean="aBean/>
+    		<ref bean="bBean/>
+    	</constructor-arg>
+    	
+    	也可將<list>改為<set>，差別在於將自動移除重複且不保證順序
+    	<constructor-arg>
+    		<set>
+    			<value>A</value>
+    			<value>B</value>   			
+    		</set>
+    	</constructor-arg>
+	-->
+    <bean id="compactDisc" class="course.spring.diXML.BlankDisc">
+    	<constructor-arg value="[Nice Song]"/>
+    	<constructor-arg value="[Some Artist]"/>
+    	<constructor-arg>
+    		<list>
+    			<value>A</value>
+    			<value>B</value>
+    			<value>C</value>
+    			<value>D</value>
+    		</list>
+    	</constructor-arg>
+    </bean>
+    
+    <bean id="cdPlayer" class="course.spring.diXML.MediaPlayerImpl">
+    	<constructor-arg ref="compactDisc"/>
+    </bean>
+    
+</beans>

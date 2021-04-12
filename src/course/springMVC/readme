@@ -1,0 +1,2 @@
+spring MVC 可使用xml設定檔或Java設定類別啟用。
+容器以ServletContainerInitalizer取代web.xml的設計，裡面包含RootConfig(包含資料庫設定DataConfig)、WebConfig這兩個設定。
